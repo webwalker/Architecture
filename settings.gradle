@@ -1,0 +1,2 @@
+include ':app', ':frameworkRouter', ':frameworkUI', ':frameworkWeb', ':frameworkCore', ':frameworkResource', ':frameworkAnnotation', ':frameworkCompiler',
+        ':bizOrder', ':bizProduct', ':frameworkPlayer'

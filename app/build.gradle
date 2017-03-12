@@ -44,4 +44,10 @@ dependencies {
         compile project(':bizProduct')
         compile project(':bizOrder')
     }
+
+
+    /* 解决app、lib编译模式切换时自动更新BuildVariant
+    debugCompile project(path: ':bizProduct', configuration: 'debug')
+    releaseCompile project(path:':bizProduct', configuration: 'release')
+    */
 }

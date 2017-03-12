@@ -8,12 +8,7 @@ import com.xujian.frameworkrouter.exception.ActivityNotRouteException;
  * activity路由规则<br />
  * Created by xujian on 2017/3/10.
  */
-public class ActivityRule extends BaseIntentRule<Activity> {
-    /**
-     * activity路由scheme
-     */
-    public static final String ACTIVITY_SCHEME = "activity://";
-
+public class ActivityRule extends abstractIntentRule<Activity> {
     /**
      * {@inheritDoc}
      */

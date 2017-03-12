@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">bizProduct</string>
+    <string name="p_app_name">bizProduct</string>
+    <string name="p_testname1">this is a product.</string>
 </resources>

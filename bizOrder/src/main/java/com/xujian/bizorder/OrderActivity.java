@@ -1,4 +1,4 @@
-package com.xujian.bizProduct;
+package com.xujian.bizorder;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
@@ -8,29 +8,27 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.xujian.annotation.Component;
-import com.xujian.annotation.StaticRouter;
+import com.xujian.annotation.AutoRouter;
+import com.xujian.frameworkrouter.mapping.RouteMapping;
 import com.xujian.frameworkrouter.Router;
-import com.xujian.frameworkrouter.rules.ActivityRule;
 
-@Component("product")
-@StaticRouter(ActivityRule.ACTIVITY_SCHEME + "product.main")
-public class TestActivity extends AppCompatActivity {
-
+@AutoRouter
+public class OrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TextView tv = new TextView(this);
         tv.setTextSize(50);
-        tv.setText("PRODUCT!!!");
+        tv.setText("ORDER!!!");
         setContentView(tv);
+        //setContentView(R.layout.activity_main);
 
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TestActivity.this, "clicked!", Toast.LENGTH_SHORT).show();
-                if (Router.resolveRouter(ActivityRule.ACTIVITY_SCHEME + "com.xujian.bizorder.MainActivity")) {
-                    Intent it = Router.invoke(TestActivity.this, ActivityRule.ACTIVITY_SCHEME + "com.xujian.bizorder.MainActivity");
+                Toast.makeText(OrderActivity.this, "clicked!", Toast.LENGTH_SHORT).show();
+                if (Router.resolveRouter(RouteMapping.ACTIVITY_SCHEMA + "product.main")) {
+                    Intent it = Router.invoke(OrderActivity.this, RouteMapping.ACTIVITY_SCHEMA + "product.main");
                     startActivity(it);
                 }
             }

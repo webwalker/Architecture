@@ -13,7 +13,7 @@ public interface Rule<T, V> {
      * @param pattern 路由uri
      * @param klass   路由class
      */
-    void router(String pattern, Class<T> klass);
+    void addRouter(String pattern, Class<T> klass);
 
     /**
      * 路由调用

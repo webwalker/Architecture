@@ -8,12 +8,7 @@ import com.xujian.frameworkrouter.exception.ServiceNotRouteException;
  * service路由规则<br />
  * Created by xujian on 2017/3/10.
  */
-public class ServiceRule extends BaseIntentRule<Service> {
-    /**
-     * service路由scheme
-     */
-    public static final String SERVICE_SCHEME = "service://";
-
+public class ServiceRule extends abstractIntentRule<Service> {
     @Override
     public void throwException(String pattern) {
         throw new ServiceNotRouteException(pattern);

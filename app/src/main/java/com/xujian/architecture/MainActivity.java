@@ -1,12 +1,13 @@
 package com.xujian.architecture;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.xujian.frameworkrouter.mapping.RouteMapping;
 import com.xujian.frameworkrouter.Router;
-import com.xujian.frameworkrouter.rules.ActivityRule;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,11 +15,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        //schema跳转过来时，通过获取Uri做业务逻辑处理
+        Uri uri = intent.getData();
     }
 
     public void click(View view) {
-        if (Router.resolveRouter(ActivityRule.ACTIVITY_SCHEME + "product.main")) {
-            Intent it = Router.invoke(this, ActivityRule.ACTIVITY_SCHEME + "product.main");
+        if (Router.resolveRouter(RouteMapping.ACTIVITY_SCHEMA + "product.main")) {
+            Intent it = Router.invoke(this, RouteMapping.ACTIVITY_SCHEMA + "product.main");
             startActivity(it);
         }
     }

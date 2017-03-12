@@ -1,4 +1,6 @@
-package com.xujian.compiler.router;
+package com.xujian.compiler;
+
+import com.xujian.compiler.RouteConfig;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

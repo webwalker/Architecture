@@ -7,10 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.xujian.annotation.Component;
 import com.xujian.annotation.StaticRouter;
 import com.xujian.frameworkcore.model.MessageEvent;
-import com.xujian.frameworkrouter.rules.ActivityRule;
+import com.xujian.frameworkrouter.mapping.ProductMapping;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -20,7 +19,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+@StaticRouter(ProductMapping.MAIN_EX)
+public class ProductActivity extends AppCompatActivity {
     @BindView(R2.id.image_shot)
     ImageView imageShot;
     @BindView(R2.id.text_title)

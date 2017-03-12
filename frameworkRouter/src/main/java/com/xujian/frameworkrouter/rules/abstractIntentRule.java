@@ -9,19 +9,19 @@ import java.util.HashMap;
  * 返回Intent的路由规则的基类<br />
  * Created by xujian on 2017/3/10.
  */
-public abstract class BaseIntentRule<T> implements Rule<T, Intent> {
-    private HashMap<String, Class<T>> mIntentRules;
+public abstract class abstractIntentRule<T> implements Rule<T, Intent> {
+    private HashMap<String, Class<T>> intentRules;
 
-    public BaseIntentRule() {
-        mIntentRules = new HashMap<>();
+    public abstractIntentRule() {
+        intentRules = new HashMap<>();
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void router(String pattern, Class<T> klass) {
-        mIntentRules.put(pattern, klass);
+    public void addRouter(String pattern, Class<T> klass) {
+        intentRules.put(pattern, klass);
     }
 
     /**
@@ -29,7 +29,7 @@ public abstract class BaseIntentRule<T> implements Rule<T, Intent> {
      */
     @Override
     public Intent invoke(Context ctx, String pattern) {
-        Class<T> klass = mIntentRules.get(pattern);
+        Class<T> klass = intentRules.get(pattern);
         if (klass == null) {
             throwException(pattern);
         }
@@ -38,7 +38,7 @@ public abstract class BaseIntentRule<T> implements Rule<T, Intent> {
 
     @Override
     public boolean resolveRule(String pattern) {
-        return mIntentRules.get(pattern) != null;
+        return intentRules.get(pattern) != null;
     }
 
     /**

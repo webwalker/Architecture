@@ -3,6 +3,7 @@ package com.xujian.frameworkrouter;
 import android.content.Context;
 
 import com.xujian.frameworkrouter.exception.NotRouteException;
+import com.xujian.frameworkrouter.mapping.RouteMapping;
 import com.xujian.frameworkrouter.rules.ActivityRule;
 import com.xujian.frameworkrouter.rules.ReceiverRule;
 import com.xujian.frameworkrouter.rules.Rule;
@@ -20,20 +21,20 @@ public class RouterInternal {
     /**
      * scheme->路由规则
      */
-    private HashMap<String, Rule> mRules;
+    private HashMap<String, Rule> rules;
 
     private RouterInternal() {
-        mRules = new HashMap<>();
+        rules = new HashMap<>();
         initDefaultRouter();
     }
 
     /**
-     * 添加默认的Activity，Service，Receiver路由
+     * 添加默认Activity，Service，Receiver的Schema
      */
     private void initDefaultRouter() {
-        addRule(ActivityRule.ACTIVITY_SCHEME, new ActivityRule());
-        addRule(ServiceRule.SERVICE_SCHEME, new ServiceRule());
-        addRule(ReceiverRule.RECEIVER_SCHEME, new ReceiverRule());
+        addRule(RouteMapping.ACTIVITY_SCHEMA, new ActivityRule());
+        addRule(RouteMapping.SERVICE_SCHEMA, new ServiceRule());
+        addRule(RouteMapping.RECEIVER_SCHEMA, new ReceiverRule());
     }
 
     /*package */
@@ -50,19 +51,19 @@ public class RouterInternal {
     }
 
     /**
-     * 添加自定义路由规则
+     * 添加自定义Schema
      *
      * @param scheme 路由scheme
      * @param rule   路由规则
      * @return {@code RouterInternal} Router真实调用类
      */
     public final RouterInternal addRule(String scheme, Rule rule) {
-        mRules.put(scheme, rule);
+        rules.put(scheme, rule);
         return this;
     }
 
     private <T, V> Rule<T, V> getRule(String pattern) {
-        HashMap<String, Rule> rules = mRules;
+        HashMap<String, Rule> rules = this.rules;
         Set<String> keySet = rules.keySet();
         Rule<T, V> rule = null;
         for (String scheme : keySet) {
@@ -76,19 +77,19 @@ public class RouterInternal {
     }
 
     /**
-     * 添加路由
+     * 添加Schema下的具体路由
      *
      * @param pattern 路由uri
      * @param klass   路由class
      * @return {@code RouterInternal} Router真实调用类
      */
-    public final <T> RouterInternal router(String pattern, Class<T> klass) {
+    public final <T> RouterInternal addRouter(String pattern, Class<T> klass) {
         Rule<T, ?> rule = getRule(pattern);
         if (rule == null) {
             throw new NotRouteException("unknown", pattern);
         }
 
-        rule.router(pattern, klass);
+        rule.addRouter(pattern, klass);
         return this;
     }
 

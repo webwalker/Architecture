@@ -1,2 +1,3 @@
-include ':app', ':frameworkRouter', ':frameworkUI', ':frameworkWeb', ':frameworkCore', ':frameworkResource', ':frameworkAnnotation', ':frameworkCompiler',
+include ':app', ':frameworkRouter', ':frameworkUI', ':frameworkWeb', ':frameworkCore', ':frameworkResource', ':bizCommon',
+        ':frameworkAnnotation', ':frameworkCompiler',
         ':bizOrder', ':bizProduct', ':frameworkPlayer'

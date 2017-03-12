@@ -1,10 +1,11 @@
-package com.xujian.compiler.router;
+package com.xujian.compiler;
 
 import com.google.auto.service.AutoService;
 import com.xujian.annotation.AutoRouter;
 import com.xujian.annotation.Component;
 import com.xujian.annotation.Components;
 import com.xujian.annotation.StaticRouter;
+import com.xujian.compiler.RouteConfig;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -87,6 +88,7 @@ public class RouterProcessor extends AbstractProcessor {
         Components componentsAnnotation = typeElement.getAnnotation(Components.class);
         String[] components = componentsAnnotation.value();
         for (String item : components) {
+            //RouteConfig.PACKAGE_NAME + "." +
             writer.println(RouteConfig.FILE_PREFIX + item + ".router();");
         }
 
@@ -140,11 +142,12 @@ public class RouterProcessor extends AbstractProcessor {
         printWriter.println("import android.app.Activity;");
         printWriter.println("import android.app.Service;");
         printWriter.println("import android.content.BroadcastReceiver;");
+        printWriter.println("import com.xujian.frameworkrouter.mapping.*;");
 
         printWriter.println("public class " + className + " {");
         printWriter.println("public static void router() {");
 
-        // // Router.router(ActivityRule.ACTIVITY_SCHEME + "shop.main", ShopActivity.class);
+        // // Router.addRouter(ActivityRule.VAR_ACTIVITY_SCHEME + "shop.main", ShopActivity.class);
         for (Map.Entry<String, String> entry : staticRouterMap.entrySet()) {
             printWriter.println(RouteConfig.ROUTER_METHOD_NAME + "(\"" + entry.getKey()
                     + "\", " + entry.getValue() + ".class);");
@@ -152,17 +155,17 @@ public class RouterProcessor extends AbstractProcessor {
 
         for (String klass : autoRouterList) {
             printWriter.println("if (Activity.class.isAssignableFrom(" + klass + ".class)) {");
-            printWriter.println(RouteConfig.ROUTER_METHOD_NAME + "(" + RouteConfig.ACTIVITY_SCHEME + " + \""
+            printWriter.println(RouteConfig.ROUTER_METHOD_NAME + "(" + RouteConfig.VAR_ACTIVITY_SCHEME + " + \""
                     + klass + "\", " + klass + ".class);");
             printWriter.println("}");
 
             printWriter.println("else if (Service.class.isAssignableFrom(" + klass + ".class)) {");
-            printWriter.println(RouteConfig.ROUTER_METHOD_NAME + "(" + RouteConfig.SERVICE_SCHEME + " + \""
+            printWriter.println(RouteConfig.ROUTER_METHOD_NAME + "(" + RouteConfig.VAR_SERVICE_SCHEME + " + \""
                     + klass + "\", " + klass + ".class);");
             printWriter.println("}");
 
             printWriter.println("else if (BroadcastReceiver.class.isAssignableFrom(" + klass + ".class)) {");
-            printWriter.println(RouteConfig.ROUTER_METHOD_NAME + "(" + RouteConfig.RECEIVER_SCHEME + " + \""
+            printWriter.println(RouteConfig.ROUTER_METHOD_NAME + "(" + RouteConfig.VAR_RECEIVER_SCHEME + " + \""
                     + klass + "\", " + klass + ".class);");
             printWriter.println("}");
         }

@@ -4,8 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
-import com.xujian.annotation.Components;
-import com.xujian.compiler.router.RouterHelper;
+import com.xujian.compiler.RouterHelper;
 
 /**
  * Created by xujian on 2017/3/9.
@@ -33,7 +32,7 @@ public class App extends android.support.multidex.MultiDexApplication {
 
     private void setupRouter() {
         RouterHelper.install();
-//        Router.router(ActivityRule.ACTIVITY_SCHEME + "shop.main", ShopActivity.class);
-//        Router.router(ActivityRule.ACTIVITY_SCHEME + "bbs.main", BBSActivity.class);
+//        Router.addRouter(ActivityRule.VAR_ACTIVITY_SCHEME + "shop.main", ShopActivity.class);
+//        Router.addRouter(ActivityRule.VAR_ACTIVITY_SCHEME + "bbs.main", BBSActivity.class);
     }
 }

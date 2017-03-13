@@ -28,8 +28,8 @@ public class DebugActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(DebugActivity.this, "clicked!", Toast.LENGTH_SHORT).show();
-                if (Router.resolveRouter(RouteMapping.ACTIVITY_SCHEMA + "com.xujian.bizorder.OrderActivity")) {
-                    Intent it = Router.invoke(DebugActivity.this, RouteMapping.ACTIVITY_SCHEMA + "com.xujian.bizorder.OrderActivity");
+                if (Router.resolveRouter(RouteMapping.pattern("com.xujian.bizorder.OrderActivity"))) {
+                    Intent it = Router.invoke(DebugActivity.this, RouteMapping.pattern("com.xujian.bizorder.OrderActivity"));
                     startActivity(it);
                 }
             }

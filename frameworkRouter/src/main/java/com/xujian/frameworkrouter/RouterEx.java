@@ -57,4 +57,11 @@ public class RouterEx {
         }
         return new Intent();
     }
+
+    public static void start(Context ctx, String url) {
+        Intent intent = invoke(ctx, url);
+        if (intent.getData() != null){
+            ctx.startActivity(intent);
+        }
+    }
 }

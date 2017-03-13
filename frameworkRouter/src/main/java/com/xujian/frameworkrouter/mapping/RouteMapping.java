@@ -10,15 +10,15 @@ public class RouteMapping {
     public static final String SERVICE_SCHEMA = ROOT_SCHEMA + "/service/";
     public static final String RECEIVER_SCHEMA = ROOT_SCHEMA + "/receiver/";
 
-    protected static String activity(String path) {
-        return ACTIVITY_SCHEMA + path;
+    public static String pattern(String pattern) {
+        return ACTIVITY_SCHEMA + pattern;
     }
 
-    protected static String service(String path) {
+    public static String service(String path) {
         return SERVICE_SCHEMA + path;
     }
 
-    protected static String receiver(String path) {
+    public static String receiver(String path) {
         return RECEIVER_SCHEMA + path;
     }
 }

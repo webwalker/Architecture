@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xujian.annotation.AutoRouter;
+import com.xujian.frameworkrouter.mapping.ProductMapping;
 import com.xujian.frameworkrouter.mapping.RouteMapping;
 import com.xujian.frameworkrouter.Router;
 
@@ -27,8 +28,8 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(OrderActivity.this, "clicked!", Toast.LENGTH_SHORT).show();
-                if (Router.resolveRouter(RouteMapping.ACTIVITY_SCHEMA + "product.main")) {
-                    Intent it = Router.invoke(OrderActivity.this, RouteMapping.ACTIVITY_SCHEMA + "product.main");
+                if (Router.resolveRouter(ProductMapping.MAIN + "?a=1&b=2")) {
+                    Intent it = Router.invoke(OrderActivity.this, ProductMapping.MAIN + "?a=1&b=2");
                     startActivity(it);
                 }
             }

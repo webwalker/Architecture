@@ -1,3 +1,5 @@
+#Architecture
+
 design for app architecture demo and test
 
 原则：控制粒度、职责单一、高内聚、低耦合
@@ -5,14 +7,12 @@ design for app architecture demo and test
 1、组件化结构
 framework开始的都是最基础、最核心、粒度较小的组件，职责单一，其他组件都可依赖它。
 除了最基础的framework之外，根据情况适当的增加2、3个模块以上的公共业务组件
-
 frameworkCore       所有组件都可能依赖的底层组件
 frameworkResource   纯资源组件, eg:drawable、String
 frameworkUI         各组件公共的UI层，不含差异化的内容()
 frameworkRouter     各组件通讯的桥梁，包含Web路由，原生路由、上下文信息协调等。
 frameworkWeb        各组件公共的Web组件，如JsBridge、缓存、WebView、WebActivitiy封装，独立进程的方式启动。
 frameworkPlayer     各组件公共的播放器模块
-
 frameworkAnnotation 注解库
 frameworkCompiler   编译库，处理注解
 
@@ -39,7 +39,11 @@ bizModule3          业务组件3
 ……
 
 3、路由规则
+   H5、Native、RN都可以通过同一个路由进行跳转，eg：xujian://com.abc.test/activity/product/main?a=b&c=d
+   有参数时会拓传到目标对象，没有则不传递参数，不影响跳转.
+   还有一种方式跳转目标对象，是需要为每个Activity等定义<data>，但是这样太麻烦，我们只需要定义一个入口，让路由器来转发即可。
 
+   如果不采用Annotation的方式，那么可以直接自己定义好路由和目标对象的映射，路由调用时查找转发。
 4、资源冲突
 
 5、组件测试
@@ -50,3 +54,6 @@ bizModule3          业务组件3
 6、App部署
 debug编译时每个bizModule可独立部署和运行
 release编译时各bizModule作为基础类库，支撑app作为主程序进行编译和部署
+
+
+组件化还有很多细节的问题需要处理，具体在不同的业务项目中在实践总结，前提是遵循组件隔离原则。

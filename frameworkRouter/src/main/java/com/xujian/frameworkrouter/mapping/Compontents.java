@@ -7,4 +7,5 @@ package com.xujian.frameworkrouter.mapping;
 public class Compontents {
     public static final String PRODUCT = "product";
     public static final String ORDER = "order";
+    public static final String USER = "user";
 }

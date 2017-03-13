@@ -4,16 +4,18 @@ apply plugin: 'com.antfortune.freeline'
 apply plugin: 'com.jakewharton.butterknife'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
     defaultConfig {
         multiDexEnabled true
         applicationId "com.xujian.architecture"
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -30,7 +32,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportLibraryVersion
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
     compile project(':frameworkCompiler')
@@ -44,7 +46,6 @@ dependencies {
         compile project(':bizProduct')
         compile project(':bizOrder')
     }
-
 
     /* 解决app、lib编译模式切换时自动更新BuildVariant
     debugCompile project(path: ':bizProduct', configuration: 'debug')

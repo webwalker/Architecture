@@ -1,3 +1,7 @@
-include ':app', ':frameworkRouter', ':frameworkUI', ':frameworkWeb', ':frameworkCore', ':frameworkResource', ':bizCommon',
+include ':app', ':frameworkRouter', ':frameworkUI', ':frameworkWeb', ':frameworkCore', ':frameworkResource', ':bizCommon', ':bizUser',
         ':frameworkAnnotation', ':frameworkCompiler',
         ':bizOrder', ':bizProduct', ':frameworkPlayer'
+
+//有时候gralde同步后没法将module作为application运行，可以分开include：
+//include ':app'
+//include ':frameworkRouter'

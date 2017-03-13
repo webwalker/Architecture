@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.xujian.frameworkrouter.mapping.ProductMapping;
 import com.xujian.frameworkrouter.mapping.RouteMapping;
 import com.xujian.frameworkrouter.Router;
 
@@ -22,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void click(View view) {
-        if (Router.resolveRouter(RouteMapping.ACTIVITY_SCHEMA + "product.main")) {
-            Intent it = Router.invoke(this, RouteMapping.ACTIVITY_SCHEMA + "product.main");
+        if (Router.resolveRouter(ProductMapping.MAIN)) {
+            Intent it = Router.invoke(this, ProductMapping.MAIN);
             startActivity(it);
         }
     }

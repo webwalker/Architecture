@@ -6,5 +6,5 @@ dependencies {
     compile project(':frameworkAnnotation')
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+sourceCompatibility = rootProject.ext.javaVersion
+targetCompatibility = rootProject.ext.javaVersion

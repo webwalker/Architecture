@@ -6,4 +6,5 @@ package com.xujian.frameworkrouter.mapping;
 public class ProductMapping extends RouteMapping {
     public static final String MAIN = ACTIVITY_SCHEMA + "product/main";
     public static final String MAIN_EX = ACTIVITY_SCHEMA + "product/main/ex";
+    public static final String FRAGMENT = FRAGMENT_SCHEMA + "product/main/?a=1&b=fsdf";
 }

@@ -10,6 +10,8 @@ import java.io.Serializable;
  */
 public class RouteParams implements Serializable {
     private Uri uri;
+    //调用时传递过去的，目标对象可以直接使用
+    public final static String KEY = "route_key";
 
     public RouteParams(Uri uri) {
         this.uri = uri;

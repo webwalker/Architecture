@@ -35,7 +35,7 @@ public class ProductActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.p_activity_product);
         ButterKnife.bind(this);
 
         EventBus.getDefault().register(this);

@@ -9,6 +9,7 @@ public class RouteMapping {
     public static final String ACTIVITY_SCHEMA = ROOT_SCHEMA + "/activity/";
     public static final String SERVICE_SCHEMA = ROOT_SCHEMA + "/service/";
     public static final String RECEIVER_SCHEMA = ROOT_SCHEMA + "/receiver/";
+    public static final String FRAGMENT_SCHEMA = ROOT_SCHEMA + "/fragment/";
 
     public static String pattern(String pattern) {
         return ACTIVITY_SCHEMA + pattern;

@@ -31,4 +31,11 @@ public interface Rule<T, V> {
      * @return
      */
     boolean resolveRule(String pattern);
+
+    /**
+     * 当找不到路由规则时抛出异常
+     *
+     * @param pattern 路由pattern
+     */
+    void throwException(String pattern);
 }

@@ -16,6 +16,11 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        //flatDir {
+            //定义要依赖的JAR、AAR路径
+            //dirs project(':bizUser').projectDir + '/libs'
+            //dirs project(':bizUser').buildDir.absolutePath + '/outputs/aar'
+        //}
     }
 }
 

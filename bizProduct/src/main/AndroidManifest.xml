@@ -3,11 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.xujian.bizProduct">
 
+    <!-- To access Google+ APIs: -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
         <activity android:name=".ProductActivity" />
-        <activity android:name=".DebugActivity"></activity>
+        <activity android:name=".DebugActivity" />
     </application>
 
 </manifest>

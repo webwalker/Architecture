@@ -5,6 +5,7 @@ import android.content.Context;
 import com.xujian.frameworkrouter.exception.NotRouteException;
 import com.xujian.frameworkrouter.mapping.RouteMapping;
 import com.xujian.frameworkrouter.rules.ActivityRule;
+import com.xujian.frameworkrouter.rules.FragmentRule;
 import com.xujian.frameworkrouter.rules.ReceiverRule;
 import com.xujian.frameworkrouter.rules.Rule;
 import com.xujian.frameworkrouter.rules.ServiceRule;
@@ -35,6 +36,7 @@ public class RouterInternal {
         addRule(RouteMapping.ACTIVITY_SCHEMA, new ActivityRule());
         addRule(RouteMapping.SERVICE_SCHEMA, new ServiceRule());
         addRule(RouteMapping.RECEIVER_SCHEMA, new ReceiverRule());
+        addRule(RouteMapping.FRAGMENT_SCHEMA, new FragmentRule());
     }
 
     /*package */

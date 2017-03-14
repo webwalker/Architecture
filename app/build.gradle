@@ -1,7 +1,9 @@
+import com.android.build.gradle.api.ApkVariant
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.antfortune.freeline'
 apply plugin: 'com.jakewharton.butterknife'
+
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -42,13 +44,29 @@ dependencies {
     compile project(':frameworkCore')
     compile project(':frameworkResource')
 
+    //编译期依赖引入：插件化应用时，在编译过程中对某个JAR有依赖，允许编译通过，但打包时不会打进去
+    //provided fileTree(dir: project(':bizProduct').projectDir.absolutePath + '/outputs/jar/', include: 'bizProduct.jar')
     if (!debug.toBoolean()) {
         compile project(':bizProduct')
         compile project(':bizOrder')
+    } else {
     }
 
     /* 解决app、lib编译模式切换时自动更新BuildVariant
     debugCompile project(path: ':bizProduct', configuration: 'debug')
     releaseCompile project(path:':bizProduct', configuration: 'release')
     */
+}
+
+android.applicationVariants.all { ApkVariant variant ->
+    def buildTypeName = variant.buildType.name
+    def task = project.tasks.create "jar${buildTypeName.capitalize()}", Jar
+    task.archiveName = 'bizProduct.jar'
+    task.dependsOn variant.javaCompiler
+    task.outputs.upToDateWhen { false }
+    task.from variant.javaCompiler.destinationDir
+    task.destinationDir = file(projectDir.absolutePath + "/outputs/jar")
+    artifacts.add('archives', task)
+
+    println projectDir.absolutePath
 }

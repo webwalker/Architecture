@@ -51,7 +51,7 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:src="@drawable/alipay_logo"
+        android:src="@mipmap/p_logo"
         app:layout_constraintBottom_toBottomOf="@+id/text_like_count"
         app:layout_constraintEnd_toStartOf="@+id/text_like_count"
         app:layout_constraintTop_toTopOf="@+id/text_like_count"

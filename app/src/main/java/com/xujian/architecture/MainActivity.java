@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.xujian.frameworkrouter.mapping.ProductMapping;
-import com.xujian.frameworkrouter.mapping.RouteMapping;
 import com.xujian.frameworkrouter.Router;
 
 public class MainActivity extends AppCompatActivity {

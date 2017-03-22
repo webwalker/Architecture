@@ -8,6 +8,7 @@ buildscript {
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' //注解框架, 编译时生成代码
         classpath 'com.antfortune.freeline:gradle:0.8.6'
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -38,5 +39,8 @@ ext {
     versionName = "1.0"
     // App dependencies
     supportLibraryVersion = '25.2.0'
-    javaVersion = '1.7'
+    javaVersion = JavaVersion.VERSION_1_7 //'1.7'
+    rxjavaVersion = '2.0.7'
+    rxandroidVersion = '2.0.1'
+    retrofitVersion = '2.2.0'
 }

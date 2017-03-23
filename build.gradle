@@ -43,4 +43,8 @@ ext {
     rxjavaVersion = '2.0.7'
     rxandroidVersion = '2.0.1'
     retrofitVersion = '2.2.0'
+
+    libSupportAppcompat = 'com.android.support:appcompat-v7:25.2.0'
+    libSupport = 'com.android.support:support-v4:25.2.0'
+    libSupportDesign = 'com.android.support:design:25.2.0'
 }

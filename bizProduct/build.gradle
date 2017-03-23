@@ -74,7 +74,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     //compile(name:'bizUser-debug',ext:'aar')
     //compile files('libs/xxxx.jar')
-    compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportLibraryVersion
+    compile rootProject.ext.libSupportAppcompat
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     /*compile project(':bizUser') { //本地库
         exclude module: 'biz...' //排除重复引用
